@@ -16,7 +16,7 @@ const villagerRouter = require("./routes/villagerRouter")
 app.use("/villagers", villagerRouter)
 
 app.get("/", (req, res) => {
-    res.render("index", { message: "Inventory Application" })
+    res.render("index", { title: "Inventory Application", message: "Home Page" })
 })
 
 const PORT = process.env.PORT || 3000;
