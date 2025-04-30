@@ -14,7 +14,6 @@ async function getVillagers() {
 
 const getVillagerByName = asyncHandler (async (name) =>  {
   const villager = await db.getVillagerByName(name)
-  console.log(villager)
 
   if (villager.length === 0) {
     throw new CustomNotFoundError("Villager not found")
@@ -23,8 +22,19 @@ const getVillagerByName = asyncHandler (async (name) =>  {
   return villager[0]
 })
 
+const getVillagersNamesOfSpecies = asyncHandler (async (species) =>  {
+  const villagersNames = await db.getVillagersNamesOfSpecies(species)
+
+  if (villagersNames.length === 0) {
+    throw new CustomNotFoundError("Species not found")
+  }
+
+  return villagersNames
+})
+
 module.exports = {
   getVillagers,
   getVillagersNames,
-  getVillagerByName
+  getVillagerByName,
+  getVillagersNamesOfSpecies
 }

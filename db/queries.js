@@ -15,8 +15,14 @@ async function getVillagerByName(name) {
   return rows
 }
 
+async function getVillagersNamesOfSpecies(species) {
+  const { rows } = await pool.query("SELECT name FROM villagers WHERE species = ($1)", [species]) 
+  return rows
+}
+
 module.exports = {
   getAllVillagers,
   getAllVillagersNames,
-  getVillagerByName
+  getVillagerByName,
+  getVillagersNamesOfSpecies
 };
