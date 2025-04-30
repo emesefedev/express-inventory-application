@@ -8,6 +8,6 @@
 
 ```
 
-🎯[Assignment]()
+🎯[Assignment](https://www.theodinproject.com/lessons/node-path-nodejs-inventory-application)
 
 📦[Solution]() In progress...
