@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title><%= capitalize(villager.name) %></title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <h1><%= capitalize(villager.name) %></h1>
+    <ul>
+      <li>Species: <%= capitalize(villager.species) %></li> 
+      <li>Gender: <%= capitalize(villager.gender) %></li> 
+      <li>Personality: <%= capitalize(villager.personality) %></li>  
+      <li>Brithday: <%= dateFormatter(villager.birthday) %></li> 
+    </ul>
+  </body>
+</html>

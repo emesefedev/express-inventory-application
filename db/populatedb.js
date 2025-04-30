@@ -15,11 +15,16 @@ CREATE TABLE IF NOT EXISTS villagers (
 
 INSERT INTO villagers (name, species, gender, personality, birthday) 
 VALUES
-  ('Ace', 'Bird', 'Male', 'Jock', '1998-08-11'),
-  ('Admiral', 'Bird', 'Male', 'Cranky', '1998-01-27'),
-  ('Agent S', 'Squirrel', 'Male', 'Peppy', '1998-07-02'),
-  ('Agnes', 'Pig', 'Female', 'Sisterly', '1998-04-21'),
-  ('Al', 'Gorilla', 'Male', 'Lazy', '1998-10-18');
+  ('ace', 'bird', 'male', 'jock', '1998-08-11'),
+  ('admiral', 'bird', 'male', 'cranky', '1998-01-27'),
+  ('agent s', 'squirrel', 'male', 'peppy', '1998-07-02'),
+  ('agnes', 'pig', 'female', 'sisterly', '1998-04-21'),
+  ('al', 'gorilla', 'male', 'lazy', '1998-10-18'),
+  ('alfonso', 'alligator', 'male', 'lazy', '1998-06-09'),
+  ('alice', 'koala', 'female', 'normal', '1998-08-19'),
+  ('ali', 'alligator', 'female', 'snooty', '1998-11-08'),
+  ('amelia', 'eagle', 'female', 'snooty', '1998-11-19'),
+  ('anabelle', 'anteater', 'female', 'peppy', '1998-02-16');
 `;
 
 async function main() {

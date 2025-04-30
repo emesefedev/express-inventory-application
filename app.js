@@ -19,6 +19,11 @@ app.get("/", (req, res) => {
     res.render("index", { title: "Inventory Application", message: "Home Page" })
 })
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.statusCode || 500).send(err.message);
+})
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

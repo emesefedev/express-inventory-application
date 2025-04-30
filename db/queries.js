@@ -10,7 +10,13 @@ async function getAllVillagersNames() {
   return rows
 }
 
+async function getVillagerByName(name) {
+  const { rows } = await pool.query("SELECT * FROM villagers WHERE name = ($1)", [name]) 
+  return rows
+}
+
 module.exports = {
   getAllVillagers,
-  getAllVillagersNames
+  getAllVillagersNames,
+  getVillagerByName
 };
