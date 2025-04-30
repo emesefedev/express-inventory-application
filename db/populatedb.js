@@ -24,7 +24,28 @@ VALUES
   ('alice', 'koala', 'female', 'normal', '1998-08-19'),
   ('ali', 'alligator', 'female', 'snooty', '1998-11-08'),
   ('amelia', 'eagle', 'female', 'snooty', '1998-11-19'),
-  ('anabelle', 'anteater', 'female', 'peppy', '1998-02-16');
+  ('anabelle', 'anteater', 'female', 'peppy', '1998-02-16'),
+  ('anchovy', 'bird', 'male', 'lazy', '1998-03-04'),
+  ('angus', 'bull', 'male', 'cranky', '1998-04-30'),
+  ('anicotty', 'mouse', 'female', 'peppy', '1998-02-24'),
+  ('ankha', 'cat', 'female', 'snooty', '1998-09-22'),
+  ('annalisa', 'anteater', 'female', 'normal', '1998-02-06'),
+  ('annalise', 'horse', 'female', 'snooty', '1998-12-02'),
+  ('antonio', 'anteater', 'male', 'jock', '1998-10-20'),
+  ('apollo', 'eagle', 'male', 'cranky', '1998-07-04'),
+  ('apple', 'hamster', 'female', 'peppy', '1998-09-24'),
+  ('astrid', 'kangaroo', 'female', 'snooty', '1998-09-08'),
+  ('audie', 'wolf', 'female', 'peppy', '1998-08-31'),
+  ('aurora', 'penguin', 'female', 'normal', '1998-01-27'),
+  ('ava', 'chicken', 'female', 'normal', '1998-04-28'),
+  ('avery', 'eagle', 'male', 'cranky', '1998-02-22'),
+  ('axel', 'elephant', 'male', 'jock', '1998-03-23'),
+  ('azalea', 'rhino', 'female', 'snooty', '1998-12-18'),
+  ('baabara', 'sheep', 'female', 'snooty', '1998-03-28'),
+  ('bam', 'deer', 'male', 'jock', '1998-11-07'),
+  ('bangle', 'tiger', 'female', 'peppy', '1998-08-27'),
+  ('barold', 'cub', 'male', 'lazy', '1998-03-02')
+  ;
 `;
 
 async function main() {
