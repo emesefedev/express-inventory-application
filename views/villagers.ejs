@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <ul>
+      <% villagersNames.map(villager => { %>
+      <li><%= villager.name %></li>  
+      <% }) %>
+    </ul>
+  </body>
+</html>
