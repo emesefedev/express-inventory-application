@@ -1,23 +1,26 @@
-require('dotenv').config();
+require('dotenv').config()
 
-const express = require("express");
-const app = express();
+const express = require("express")
+const app = express()
 
-const path = require("node:path");
+const path = require("node:path")
 
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+const assetsPath = path.join(__dirname, "public")
+app.use(express.static(assetsPath))
 
-const villagerRouter = require("./routes/villagerRouter");
+app.set("views", path.join(__dirname, "views"))
+app.set("view engine", "ejs")
 
-app.use("/villagers", villagerRouter);
+const villagerRouter = require("./routes/villagerRouter")
+
+app.use("/villagers", villagerRouter)
 
 app.get("/", (req, res) => {
-    res.render("index", { message: "Inventory Application" });
-});
+    res.render("index", { message: "Inventory Application" })
+})
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}!`);
-});
+  console.log(`Listening on port ${PORT}!`)
+})
