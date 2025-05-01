@@ -37,10 +37,27 @@ async function getSpecies() {
   return species
 }
 
+const getVillagersNamesOfSGender = asyncHandler (async (gender) =>  {
+  const villagersNames = await db.getVillagersNamesOfGender(gender)
+
+  if (villagersNames.length === 0) {
+    throw new CustomNotFoundError("Gender not found")
+  }
+
+  return villagersNames
+})
+
+async function getGenders() {
+  const genders = await db.getGenders()
+  return genders
+}
+
 module.exports = {
   getVillagers,
   getVillagersNames,
   getVillagerByName,
   getVillagersNamesOfSpecies,
-  getSpecies
+  getSpecies,
+  getVillagersNamesOfSGender,
+  getGenders
 }

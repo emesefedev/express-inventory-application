@@ -1,12 +1,12 @@
 const pool = require("./pool")
 
 async function getAllVillagers() {
-  const { rows } = await pool.query("SELECT * FROM villagers")
+  const { rows } = await pool.query("SELECT * FROM villagers ORDER BY name")
   return rows
 }
 
 async function getAllVillagersNames() {
-  const { rows } = await pool.query("SELECT name FROM villagers")
+  const { rows } = await pool.query("SELECT name FROM villagers ORDER BY name")
   return rows
 }
 
@@ -16,7 +16,7 @@ async function getVillagerByName(name) {
 }
 
 async function getVillagersNamesOfSpecies(species) {
-  const { rows } = await pool.query("SELECT name FROM villagers WHERE species = ($1)", [species]) 
+  const { rows } = await pool.query("SELECT name FROM villagers WHERE species = ($1) ORDER BY name", [species]) 
   return rows
 }
 
@@ -25,10 +25,22 @@ async function getSpecies() {
   return rows
 }
 
+async function getVillagersNamesOfGender(gender) {
+  const { rows } = await pool.query("SELECT name FROM villagers WHERE gender = ($1) ORDER BY name", [gender]) 
+  return rows
+}
+
+async function getGenders() {
+  const { rows } = await pool.query("SELECT DISTINCT gender FROM villagers ORDER BY gender")
+  return rows
+}
+
 module.exports = {
   getAllVillagers,
   getAllVillagersNames,
   getVillagerByName,
   getVillagersNamesOfSpecies,
-  getSpecies
-};
+  getSpecies,
+  getVillagersNamesOfGender,
+  getGenders
+}
