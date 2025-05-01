@@ -20,9 +20,15 @@ async function getVillagersNamesOfSpecies(species) {
   return rows
 }
 
+async function getSpecies() {
+  const { rows } = await pool.query("SELECT DISTINCT species FROM villagers")
+  return rows
+}
+
 module.exports = {
   getAllVillagers,
   getAllVillagersNames,
   getVillagerByName,
-  getVillagersNamesOfSpecies
+  getVillagersNamesOfSpecies,
+  getSpecies
 };

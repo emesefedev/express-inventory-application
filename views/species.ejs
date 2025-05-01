@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <h1><%= capitalize(title) %></h1>
+    <ul>
+      <% species.map(villager => { %>
+        <li> <a href=<%= `species/${villager.species}`%> >  <%= capitalize(villager.species) %>  </a> </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
