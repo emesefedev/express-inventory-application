@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <h1><%= capitalize(title) %></h1>
+    <%- include("title", {title, capitalize}) %>
     <ul>
       <% villagersNames.map(villager => { %>
         <li> <a href=<%= `/villagers/${villager.name}`%> >  <%= capitalize(villager.name) %>  </a> </li>

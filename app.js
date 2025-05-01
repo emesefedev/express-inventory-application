@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { capitalize } = require('./utilities/strings')
 
 const express = require("express")
 const app = express()
@@ -16,7 +17,7 @@ const villagerRouter = require("./routes/villagerRouter")
 app.use("/villagers", villagerRouter)
 
 app.get("/", (req, res) => {
-    res.render("index", { title: "Inventory Application", message: "Home Page" })
+    res.render("index", { title: "Inventory Application", message: "Home Page", capitalize })
 })
 
 app.use((err, req, res, next) => {

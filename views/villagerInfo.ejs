@@ -5,7 +5,8 @@
   </head>
 
   <body>
-    <h1><%= capitalize(villager.name) %></h1>
+    <%- include("title", {title: villager.name, capitalize}) %>
+    
     <ul>
       <li>Species: <%= capitalize(villager.species) %></li> 
       <li>Gender: <%= capitalize(villager.gender) %></li> 
