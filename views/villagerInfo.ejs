@@ -1,8 +1,5 @@
 <html>
-  <head>
-    <title><%= capitalize(villager.name) %></title>
-    <link rel="stylesheet" href="/style.css">
-  </head>
+  <%- include("head", {title}) %>
 
   <body>
     <%- include("title", {title: villager.name, capitalize}) %>
