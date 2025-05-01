@@ -35,6 +35,16 @@ async function getGenders() {
   return rows
 }
 
+async function getVillagersNamesOfPersonality(personality) {
+  const { rows } = await pool.query("SELECT name FROM villagers WHERE personality = ($1) ORDER BY name", [personality]) 
+  return rows
+}
+
+async function getPersonalities() {
+  const { rows } = await pool.query("SELECT DISTINCT personality FROM villagers ORDER BY personality")
+  return rows
+}
+
 module.exports = {
   getAllVillagers,
   getAllVillagersNames,
@@ -42,5 +52,7 @@ module.exports = {
   getVillagersNamesOfSpecies,
   getSpecies,
   getVillagersNamesOfGender,
-  getGenders
+  getGenders,
+  getVillagersNamesOfPersonality,
+  getPersonalities
 }

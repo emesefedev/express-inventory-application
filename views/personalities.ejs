@@ -1,0 +1,12 @@
+<html>
+  <%- include("head", {title}) %>
+
+  <body>
+    <%- include("title", {title, capitalize}) %>
+    <ul>
+      <% personalities.map(villager => { %>
+        <li> <a href=<%= `/villagers/personalities/${villager.personality}`%> >  <%= capitalize(villager.personality) %>  </a> </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

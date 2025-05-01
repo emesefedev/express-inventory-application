@@ -1,8 +1,16 @@
 const { Router } = require("express")
-const { getVillagersNames, getVillagerByName, getVillagersNamesOfSpecies, getSpecies, getGenders } = require('../controllers/villagerController')
+const { 
+  getVillagersNames, 
+  getVillagerByName, 
+  getVillagersNamesOfSpecies, 
+  getSpecies,
+  getVillagersNamesOfGender, 
+  getGenders,
+  getVillagersNamesOfPersonality,
+  getPersonalities
+} = require('../controllers/villagerController')
 const { capitalize } = require('../utilities/strings')
 const { formatDateToDDMM } = require('../utilities/dates')
-const { getVillagersNamesOfGender } = require("../db/queries")
 
 const villagerRouter = Router()
 
@@ -35,6 +43,19 @@ villagerRouter.get("/genders/:gender", async (req, res) => {
   const villagersNames = await getVillagersNamesOfGender(gender)
   
   res.render("villagers", { title: `${gender}s`, villagersNames, capitalize })
+})
+
+villagerRouter.get("/personalities", async (req, res) => {
+  const personalities = await getPersonalities()
+  
+  res.render("personalities", { title: "Villagers' Personalities", personalities, capitalize })
+})
+
+villagerRouter.get("/personalities/:personality", async (req, res) => {
+  const { personality } = req.params;
+  const villagersNames = await getVillagersNamesOfPersonality(personality)
+  
+  res.render("villagers", { title: `${personality}s`, villagersNames, capitalize })
 })
 
 villagerRouter.get("/:villagerName", async (req, res) => {
