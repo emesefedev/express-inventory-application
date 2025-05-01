@@ -95,8 +95,6 @@ VALUES
   ('cesar', 'gorilla', 'male', 'cranky', '1998-09-06'),
   ('chabwick', 'penguin', 'male', 'lazy', '1998-12-24'),
   ('chadder', 'mouse', 'male', 'smug', '1998-12-15'),
-
-  
   ('chai', 'elephant', 'female', 'peppy', '1998-03-06'),
   ('charlise', 'bear', 'female', 'sisterly', '1998-04-17'),
   ('chelsea', 'deer', 'female', 'normal', '1998-01-18'),
