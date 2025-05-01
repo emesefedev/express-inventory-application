@@ -8,7 +8,7 @@
     <h1><%= capitalize(title) %></h1>
     <ul>
       <% species.map(villager => { %>
-        <li> <a href=<%= `species/${villager.species}`%> >  <%= capitalize(villager.species) %>  </a> </li>
+        <li> <a href=<%= `${villager.species}`%> >  <%= capitalize(villager.species) %>  </a> </li>
       <% }) %>
     </ul>
   </body>

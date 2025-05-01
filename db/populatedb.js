@@ -44,7 +44,7 @@ VALUES
   ('baabara', 'sheep', 'female', 'snooty', '1998-03-28'),
   ('bam', 'deer', 'male', 'jock', '1998-11-07'),
   ('bangle', 'tiger', 'female', 'peppy', '1998-08-27'),
-  ('barold', 'cub', 'male', 'lazy', '1998-03-02')
+  ('barold', 'cub', 'male', 'lazy', '1998-03-02'),
   ('bea', 'dog', 'female', 'normal', '1998-10-15'),
   ('beardo', 'gear', 'male', 'smug', '1998-09-27'),
   ('beau', 'deer', 'male', 'lazy', '1998-04-05'),

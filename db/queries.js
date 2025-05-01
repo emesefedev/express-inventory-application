@@ -21,7 +21,7 @@ async function getVillagersNamesOfSpecies(species) {
 }
 
 async function getSpecies() {
-  const { rows } = await pool.query("SELECT DISTINCT species FROM villagers")
+  const { rows } = await pool.query("SELECT DISTINCT species FROM villagers ORDER BY species")
   return rows
 }
 
