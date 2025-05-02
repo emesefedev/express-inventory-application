@@ -42,6 +42,16 @@ const getVillagersNamesOfSpecies = asyncHandler (async (species) =>  {
   return villagersNames
 })
 
+const getVillagersNamesOfSpeciesThatStartWith = asyncHandler (async (species, letter) =>  {
+  const villagersNames = await db.getVillagersNamesOfSpeciesThatStartWith(species, letter)
+
+  if (villagersNames.length === 0) {
+    throw new CustomNotFoundError(`There is no villager of the ${species} species that starts with the letter ${letter}`)
+  }
+
+  return villagersNames
+})
+
 async function getSpecies() {
   const species = await db.getSpecies()
   return species
@@ -57,6 +67,16 @@ const getVillagersNamesOfGender = asyncHandler (async (gender) =>  {
   return villagersNames
 })
 
+const getVillagersNamesOfGenderThatStartWith = asyncHandler (async (gender, letter) =>  {
+  const villagersNames = await db.getVillagersNamesOfGenderThatStartWith(gender, letter)
+
+  if (villagersNames.length === 0) {
+    throw new CustomNotFoundError(`There is no villager of the ${gender} gender that starts with the letter ${letter}`)
+  }
+
+  return villagersNames
+})
+
 async function getGenders() {
   const genders = await db.getGenders()
   return genders
@@ -67,6 +87,16 @@ const getVillagersNamesOfPersonality = asyncHandler (async (personality) =>  {
 
   if (villagersNames.length === 0) {
     throw new CustomNotFoundError("Personality not found")
+  }
+
+  return villagersNames
+})
+
+const getVillagersNamesOfPersonalityThatStartWith = asyncHandler (async (personality, letter) =>  {
+  const villagersNames = await db.getVillagersNamesOfPersonalityThatStartWith(personality, letter)
+
+  if (villagersNames.length === 0) {
+    throw new CustomNotFoundError(`There is no villager of the ${personality} personality that starts with the letter ${letter}`)
   }
 
   return villagersNames
@@ -88,10 +118,13 @@ module.exports = {
   getVillagersNamesThatStartWith,
   getVillagerByName,
   getVillagersNamesOfSpecies,
+  getVillagersNamesOfSpeciesThatStartWith,
   getSpecies,
   getVillagersNamesOfGender,
+  getVillagersNamesOfGenderThatStartWith,
   getGenders,
   getVillagersNamesOfPersonality,
+  getVillagersNamesOfPersonalityThatStartWith,
   getPersonalities,
   getFirstLetters
 }
