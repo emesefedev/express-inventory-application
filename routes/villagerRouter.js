@@ -136,6 +136,10 @@ villagerRouter.get("/personalities/:personality/:letter", async (req, res) => {
   })
 })
 
+villagerRouter.get("/names", async (req, res) => {
+  res.redirect("/villagers")
+})
+
 villagerRouter.get("/names/:letter", async (req, res) => {
   const { letter } = req.params;
   const villagersNames = await getVillagersNamesThatStartWith(letter)
