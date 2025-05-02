@@ -1,10 +1,14 @@
 require('dotenv').config()
 const { capitalize } = require('./utilities/strings')
-
 const express = require("express")
-const app = express()
-
 const path = require("node:path")
+
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/villagers", text: "Villagers" },
+]
+
+const app = express()
 
 const assetsPath = path.join(__dirname, "public")
 app.use(express.static(assetsPath))
@@ -17,7 +21,11 @@ const villagerRouter = require("./routes/villagerRouter")
 app.use("/villagers", villagerRouter)
 
 app.get("/", (req, res) => {
-    res.render("index", { title: "Inventory Application", message: "Home Page", capitalize })
+    res.render("index", { 
+      title: "Inventory Application", 
+      message: "This is my inventory application, where you can see information about Animal Crossing New Horizons' Villagers.", 
+      capitalize, 
+      links })
 })
 
 app.use((err, req, res, next) => {

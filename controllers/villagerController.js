@@ -22,6 +22,16 @@ const getVillagerByName = asyncHandler (async (name) =>  {
   return villager[0]
 })
 
+const getVillagersNamesThatStartWith = asyncHandler (async (letter) =>  {
+  const villagersNames = await db.getVillagersNamesThatStartWith(letter)
+
+  if (villagersNames.length === 0) {
+    throw new CustomNotFoundError("Letter not found")
+  }
+
+  return villagersNames
+})
+
 const getVillagersNamesOfSpecies = asyncHandler (async (species) =>  {
   const villagersNames = await db.getVillagersNamesOfSpecies(species)
 
@@ -67,14 +77,21 @@ async function getPersonalities() {
   return personalities
 }
 
+async function getFirstLetters() {
+  const firstLetters = await db.getFirstLetters()
+  return firstLetters
+}
+
 module.exports = {
   getVillagers,
   getVillagersNames,
+  getVillagersNamesThatStartWith,
   getVillagerByName,
   getVillagersNamesOfSpecies,
   getSpecies,
   getVillagersNamesOfGender,
   getGenders,
   getVillagersNamesOfPersonality,
-  getPersonalities
+  getPersonalities,
+  getFirstLetters
 }

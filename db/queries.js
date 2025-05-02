@@ -10,6 +10,12 @@ async function getAllVillagersNames() {
   return rows
 }
 
+async function getVillagersNamesThatStartWith(letter) {
+  const pattern = `${letter}%`
+  const { rows } = await pool.query("SELECT name FROM villagers WHERE name LIKE ($1) ORDER BY name", [pattern])
+  return rows
+}
+
 async function getVillagerByName(name) {
   const { rows } = await pool.query("SELECT * FROM villagers WHERE name = ($1)", [name]) 
   return rows
@@ -45,14 +51,22 @@ async function getPersonalities() {
   return rows
 }
 
+async function getFirstLetters() {
+  const { rows } = await pool.query("SELECT DISTINCT LEFT(name, 1) AS firstLetter FROM villagers ORDER BY firstLetter")
+  console.log(rows)
+  return rows
+}
+
 module.exports = {
   getAllVillagers,
   getAllVillagersNames,
+  getVillagersNamesThatStartWith,
   getVillagerByName,
   getVillagersNamesOfSpecies,
   getSpecies,
   getVillagersNamesOfGender,
   getGenders,
   getVillagersNamesOfPersonality,
-  getPersonalities
+  getPersonalities,
+  getFirstLetters
 }

@@ -1,14 +1,17 @@
 <html>
   <%- include("head", {title: villager.name}) %>
 
-  <body class="bg-[#B0D0D3] p-4">
-    <%- include("title", {title: villager.name, capitalize}) %>
-    
-    <ul>
-      <li>Species: <%= capitalize(villager.species) %></li> 
-      <li>Gender: <%= capitalize(villager.gender) %></li> 
-      <li>Personality: <%= capitalize(villager.personality) %></li>  
-      <li>Brithday: <%= dateFormatter(villager.birthday) %></li> 
-    </ul>
+  <body class="bg-[#B0D0D3]">
+    <%- include("navbar", {links}) %>
+    <main class="p-4">
+      <%- include("title", {title: villager.name, capitalize}) %>
+      
+      <ul class="mt-2">
+        <li>Species: <%= capitalize(villager.species) %></li> 
+        <li>Gender: <%= capitalize(villager.gender) %></li> 
+        <li>Personality: <%= capitalize(villager.personality) %></li>  
+        <li>Brithday: <%= dateFormatter(villager.birthday) %></li> 
+      </ul>
+    </main>
   </body>
 </html>

@@ -1,12 +1,17 @@
 <html>
   <%- include("head", {title}) %>
 
-  <body class="bg-[#B0D0D3] p-4">
-    <%- include("title", {title, capitalize}) %>
-    <ul>
-      <% species.map(villager => { %>
-        <li> <a href=<%= `/villagers/species/${villager.species}`%> >  <%= capitalize(villager.species) %>  </a> </li>
-      <% }) %>
-    </ul>
+  <body class="bg-[#B0D0D3]">
+    <%- include("navbar", {links}) %>
+    
+    <main class="p-4">
+      <%- include("title", {title, capitalize}) %>
+      
+      <ul class="mt-2">
+        <% species.map(villager => { %>
+          <li> <a href=<%= `/villagers/species/${villager.species}`%> >  <%= capitalize(villager.species) %>  </a> </li>
+        <% }) %>
+      </ul>
+    </main>
   </body>
 </html>
