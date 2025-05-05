@@ -1,0 +1,15 @@
+<html>
+  <%- include("head", {title}) %>
+
+  <body class="bg-[#B0D0D3]">
+    <%- include("navbar", {links}) %>
+    <main class="p-4">
+      <%- include("title", {title, capitalize}) %>
+      <ul class="mt-2">
+        <% months.map(month => { %>
+          <li> <a href=<%= `/villagers/birthdays/${month}`%> >  <%= capitalize(month) %>  </a> </li>
+        <% }) %>
+      </ul>
+    </main>
+  </body>
+</html>

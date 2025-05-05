@@ -14,10 +14,12 @@ const villagerRouter = Router()
 const speciesRouter = require("./speciesRouter")
 const genderRouter = require("./genderRouter")
 const personalityRouter = require("./personalityRouter")
+const birthdayRouter = require("./birthdayRouter")
 
 villagerRouter.use("/species", speciesRouter)
 villagerRouter.use("/genders", genderRouter)
 villagerRouter.use("/personalities", personalityRouter)
+villagerRouter.use("/birthdays", birthdayRouter)
 
 villagerRouter.get("/", async (req, res) => {
   const villagersNames = await getVillagersNames()

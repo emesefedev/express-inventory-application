@@ -112,6 +112,16 @@ async function getFirstLetters() {
   return firstLetters
 }
 
+const getVillagersNamesWithBirthdaysInMonth = asyncHandler (async (month) =>  {
+  const villagersNames = await db.getVillagersNamesWithBirthdaysInMonth(month)
+
+  if (villagersNames.length === 0) {
+    throw new CustomNotFoundError("Birthday not found")
+  }
+
+  return villagersNames
+})
+
 module.exports = {
   getVillagers,
   getVillagersNames,
@@ -126,5 +136,6 @@ module.exports = {
   getVillagersNamesOfPersonality,
   getVillagersNamesOfPersonalityThatStartWith,
   getPersonalities,
-  getFirstLetters
+  getFirstLetters,
+  getVillagersNamesWithBirthdaysInMonth
 }
