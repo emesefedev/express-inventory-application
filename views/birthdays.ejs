@@ -8,9 +8,9 @@
       <div class="grid grid-cols-4 gap-4 mt-4">
         <% months.map(month => { %>
           <a 
-            href=<%= `/villagers/birthdays/${month}`%> 
+            href=<%= `/villagers/birthdays/${month.monthName}`%> 
             class="flex justify-center items-center bg-[#EC9192] border border-[#EC9192] border-2 rounded-lg h-16 text-white"> 
-              <p> <%= capitalize(month) %>  </p> 
+              <p> <%= capitalize(month.monthName) %>  </p> 
           </a>
         <% }) %>
       </div>

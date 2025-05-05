@@ -10,24 +10,26 @@ birthdayRouter.get("/", async (req, res) => {
   res.render("birthdays", { 
     title: "Birthdays",  
     capitalize, 
-    months,
-    links: linksVillagers 
+    links: linksVillagers,
+    months
   })
 })
 
 birthdayRouter.get("/:monthName", async (req, res) => {
-  const { monthName } = req.params;
-  const month = months.indexOf(monthName) + 1;
+  const { monthName } = req.params
+  const monthIdx = months.findIndex(m => m.monthName === monthName)
+  const month = months[monthIdx]
   
-  const villagersNames = await getVillagersNamesWithBirthdaysInMonth(month)
+  const villagersNames = await getVillagersNamesWithBirthdaysInMonth(month.monthNumber)
   
-  res.render("villagers", { 
+  res.render("villagersBirthdays", { 
     title: `Birthdays in ${monthName}`, 
-    villagersNames, 
+    // villagersNames, 
     capitalize, 
     links: linksVillagers, 
     firstLetters: [], 
-    subpath: `birthdays/${monthName}` 
+    // subpath: `birthdays/${monthName}`,
+    month 
   })
 })
 
