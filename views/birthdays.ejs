@@ -5,11 +5,15 @@
     <%- include("navbar", {links}) %>
     <main class="p-4">
       <%- include("title", {title, capitalize}) %>
-      <ul class="mt-2">
+      <div class="grid grid-cols-4 gap-4 mt-4">
         <% months.map(month => { %>
-          <li> <a href=<%= `/villagers/birthdays/${month}`%> >  <%= capitalize(month) %>  </a> </li>
+          <a 
+            href=<%= `/villagers/birthdays/${month}`%> 
+            class="flex justify-center items-center bg-[#EC9192] border border-[#EC9192] border-2 rounded-lg h-16 text-white"> 
+              <p> <%= capitalize(month) %>  </p> 
+          </a>
         <% }) %>
-      </ul>
+      </div>
     </main>
   </body>
 </html>
