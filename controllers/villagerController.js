@@ -122,6 +122,12 @@ const getVillagersNamesWithBirthdaysInMonth = asyncHandler (async (month) =>  {
   return villagersNames
 })
 
+const getVillagersNamesWithBirthdaysInDate = asyncHandler (async (month, day) =>  {
+  const villagersNames = await db.getVillagersNamesWithBirthdaysInDate(month, day)
+
+  return villagersNames
+})
+
 module.exports = {
   getVillagers,
   getVillagersNames,
@@ -137,5 +143,6 @@ module.exports = {
   getVillagersNamesOfPersonalityThatStartWith,
   getPersonalities,
   getFirstLetters,
-  getVillagersNamesWithBirthdaysInMonth
+  getVillagersNamesWithBirthdaysInMonth,
+  getVillagersNamesWithBirthdaysInDate
 }

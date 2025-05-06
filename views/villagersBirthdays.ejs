@@ -6,10 +6,23 @@
     <main class="p-4">
       <%- include("title", {title, capitalize}) %>
       <div class="grid grid-cols-7 gap-4 mt-4 p-8">
-        <%  for (let i = 1; i <= month.totalDays; i++) {  %>
-          <div  
-            class="flex justify-center items-center bg-[#EC9192] border border-[#EC9192] border-2 rounded-lg h-8 text-white"> 
-              <p> <%= i %>  </p> 
+        <%  for (let d = 1; d <= month.totalDays; d++) {  %>
+          <div class="flex flex-col gap-2 border border-[#EC9192] border-2 rounded-lg">
+            <div  
+              class="flex justify-center items-center bg-[#EC9192] h-8 text-white font-bold"> 
+                <p> <%= d %>  </p> 
+            </div>
+            
+            <div class="flex flex-col justify-center gap-2 items-center h-20">
+              <%  for (let i = 0; i < villagersBirthdays[d].length; i++) {  %>
+                <%  const villagerName =  villagersBirthdays[d][i].name %>
+                <div> 
+                  <a href=<%= `/villagers/${villagerName.replace(" ", "%20")}`%> > 
+                    <%= capitalize(villagerName) %>  
+                  </a> 
+                </div>
+              <% } %>
+            </div>  
         </div>
         <% } %>
       </div>
