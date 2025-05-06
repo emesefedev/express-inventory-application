@@ -27,7 +27,7 @@ VALUES
   ('anabelle', 'anteater', 'female', 'peppy', '1998-02-16'),
   ('anchovy', 'bird', 'male', 'lazy', '1998-03-04'),
   ('angus', 'bull', 'male', 'cranky', '1998-04-30'),
-  ('anicotty', 'mouse', 'female', 'peppy', '1998-02-24'),
+  ('anicotti', 'mouse', 'female', 'peppy', '1998-02-24'),
   ('ankha', 'cat', 'female', 'snooty', '1998-09-22'),
   ('annalisa', 'anteater', 'female', 'normal', '1998-02-06'),
   ('annalise', 'horse', 'female', 'snooty', '1998-12-02'),
