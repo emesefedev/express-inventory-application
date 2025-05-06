@@ -275,7 +275,6 @@ VALUES
   ('muffy', 'sheep', 'female', 'sisterly', '1998-02-14'),
   ('murphy', 'cub', 'male', 'cranky', '1998-12-29'),
   ('nan', 'goat', 'female', 'normal', '1998-08-24'),
-
   ('nana', 'monkey', 'female', 'normal', '1998-08-23'),
   ('naomi', 'cow', 'female', 'snooty', '1998-02-28'),
   ('nate', 'bear', 'male', 'lazy', '1998-08-16'),
@@ -316,7 +315,6 @@ VALUES
   ('poncho', 'cub', 'male', 'jock', '1998-01-02'),
   ('poppy', 'squirrel', 'female', 'normal', '1998-08-05'),
   ('portia', 'dog', 'female', 'snooty', '1998-10-25'),
-  
   ('prince', 'frog', 'male', 'lazy', '1998-07-21'),
   ('puck', 'penguin', 'male', 'lazy', '1998-02-21'),
   ('puddles', 'frog', 'female', 'peppy', '1998-01-13'),
@@ -336,7 +334,27 @@ VALUES
   ('ribbot', 'frog', 'male', 'jock', '1998-02-13'),
   ('ricky', 'squirrel', 'male', 'cranky', '1998-09-14'),
   ('rilla', 'gorilla', 'female', 'peppy', '1998-11-01'),
-  ('rio', 'ostrich', 'female', 'peppy', '1998-09-10')
+  ('rio', 'ostrich', 'female', 'peppy', '1998-09-10'),
+  ('rizzo', 'mouse', 'male', 'cranky', '1998-01-17'),
+  ('roald', 'penguin', 'male', 'jock', '1998-01-05'),
+  ('robin', 'bird', 'female', 'snooty', '1998-12-04'),
+  ('rocco', 'hippo', 'male', 'cranky', '1998-08-18'),
+  ('rocket', 'gorilla', 'female', 'sisterly', '1998-04-14'),
+  ('rod', 'mouse', 'male', 'jock', '1998-08-14'),
+  ('rodeo', 'bull', 'male', 'lazy', '1998-10-29'),
+  ('rodney', 'hamster', 'male', 'smug', '1998-11-10'),
+  ('rolf', 'tiger', 'male', 'cranky', '1998-08-22'),
+  ('rooney', 'kangaroo', 'male', 'cranky', '1998-12-01'),
+  ('rory', 'lion', 'male', 'jock', '1998-08-07'),
+  ('roscoe', 'horse', 'male', 'cranky', '1998-06-16'),
+  ('rosie', 'cat', 'female', 'peppy', '1998-02-27'),
+  ('roswell', 'alligator', 'male', 'smug', '1998-05-02'),
+  ('rowan', 'tiger', 'male', 'jock', '1998-08-26'),
+  ('ruby', 'rabbit', 'female', 'peppy', '1998-12-25'),
+  ('rudy', 'cat', 'male', 'jock', '1998-12-20'),
+  ('sally', 'squirrel', 'female', 'normal', '1998-06-19'),
+  ('samson', 'mouse', 'male', 'jock', '1998-07-05'),
+  ('sandy', 'ostrich', 'female', 'normal', '1998-10-21')
   ;
 `;
 
