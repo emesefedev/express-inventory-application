@@ -22,7 +22,7 @@ VALUES
   ('al', 'gorilla', 'male', 'lazy', '1998-10-18'),
   ('alfonso', 'alligator', 'male', 'lazy', '1998-06-09'),
   ('alice', 'koala', 'female', 'normal', '1998-08-19'),
-  ('ali', 'alligator', 'female', 'snooty', '1998-11-08'),
+  ('alli', 'alligator', 'female', 'snooty', '1998-11-08'),
   ('amelia', 'eagle', 'female', 'snooty', '1998-11-19'),
   ('anabelle', 'anteater', 'female', 'peppy', '1998-02-16'),
   ('anchovy', 'bird', 'male', 'lazy', '1998-03-04'),
