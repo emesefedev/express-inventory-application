@@ -4,14 +4,21 @@
   <body class="bg-[#B0D0D3]">
     <%- include("navbar", {links}) %>
     <main class="p-4">
-      <%- include("title", {title: villager.name, capitalize}) %>
-      
-      <ul class="mt-2">
-        <li>Species: <%= capitalize(villager.species) %></li> 
-        <li>Gender: <%= capitalize(villager.gender) %></li> 
-        <li>Personality: <%= capitalize(villager.personality) %></li>  
-        <li>Brithday: <%= dateFormatter(villager.birthday) %></li> 
-      </ul>
+      <div class="flex flex-col gap-4 justify-center items-center bg-[#F3EEC3] border border-[#46494C] border-4 rounded-lg h-96 w-64 mt-2 text-[#46494C]">
+        <%- include("title", {title: villager.name, capitalize}) %>
+
+        <img 
+          class="rounded h-40 w-40"
+          src="/villagers/<%= villager.name.replace(" ", "") %>.png"
+          alt=<%= villager.name %>>
+
+        <div class="flex flex-col gap-2">
+          <p>Species: <%= capitalize(villager.species) %></p> 
+          <p>Gender: <%= capitalize(villager.gender) %></p> 
+          <p>Personality: <%= capitalize(villager.personality) %></p>  
+          <p>Brithday: <%= dateFormatter(villager.birthday) %></p> 
+        </div>
+      </div>
     </main>
   </body>
 </html>

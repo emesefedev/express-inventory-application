@@ -93,7 +93,6 @@ async function getVillagersNamesWithBirthdaysInDate(month, day) {
   const { rows } = await pool.query(
     "SELECT name FROM villagers WHERE EXTRACT(MONTH FROM birthday) = ($1) AND EXTRACT(DAY FROM birthday) = ($2) ORDER BY name",
     [month, day])
-  console.log(rows)
   return rows
 }
 
