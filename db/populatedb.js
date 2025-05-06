@@ -354,7 +354,27 @@ VALUES
   ('rudy', 'cat', 'male', 'jock', '1998-12-20'),
   ('sally', 'squirrel', 'female', 'normal', '1998-06-19'),
   ('samson', 'mouse', 'male', 'jock', '1998-07-05'),
-  ('sandy', 'ostrich', 'female', 'normal', '1998-10-21')
+  ('sandy', 'ostrich', 'female', 'normal', '1998-10-21'),
+  ('sasha', 'rabbit', 'male', 'lazy', '1998-05-19'),  
+  ('savannah', 'horse', 'female', 'normal', '1998-01-25'),
+  ('scoot', 'duck', 'male', 'jock', '1998-06-13'),
+  ('shari', 'monkey', 'female', 'sisterly', '1998-04-10'),
+  ('sheldon', 'squirrel', 'male', 'jock', '1998-02-26'),
+  ('shep', 'dog', 'male', 'smug', '1998-11-24'),
+  ('sherb', 'goat', 'male', 'lazy', '1998-01-18'),
+  ('shino', 'deer', 'female', 'peppy', '1998-10-31'),
+  ('simon', 'monkey', 'male', 'lazy', '1998-01-19'),
+  ('skye', 'wolf', 'female', 'normal', '1998-03-24'),
+  ('sly', 'alligator', 'male', 'jock', '1998-11-15'),
+  ('snake', 'rabbit', 'male', 'jock', '1998-11-03'),
+  ('snooty', 'anteater', 'female', 'snooty', '1998-10-24'),
+  ('soleil', 'hamster', 'female', 'snooty', '1998-08-09'),
+  ('sparro', 'bird', 'male', 'jock', '1998-11-20'),
+  ('spike', 'rhino', 'male', 'cranky', '1998-06-17'),
+  ('spork', 'pig', 'male', 'lazy', '1998-09-03'),
+  ('sprinkle', 'penguin', 'female', 'peppy', '1998-02-20'),
+  ('sprocket', 'ostrich', 'male', 'jock', '1998-12-01'),
+  ('static', 'squirrel', 'male', 'cranky', '1998-07-09')
   ;
 `;
 
