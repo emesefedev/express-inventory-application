@@ -416,7 +416,7 @@ VALUES
   ('wade', 'penguin', 'male', 'lazy', '1998-10-30'),
   ('walker', 'dog', 'male', 'lazy', '1998-06-10'),
   ('walt', 'kangaroo', 'male', 'cranky', '1998-04-24'),
-  ('walt jr', 'frog', 'male', 'cranky', '1998-08-21'),
+  ('wart jr', 'frog', 'male', 'cranky', '1998-08-21'),
   ('weber', 'duck', 'male', 'lazy', '1998-06-30'),
   ('wendy', 'sheep', 'female', 'peppy', '1998-08-15'),
   ('whitney', 'wolf', 'female', 'snooty', '1998-09-17'),
