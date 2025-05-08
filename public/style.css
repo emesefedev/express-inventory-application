@@ -178,9 +178,6 @@
   .grid {
     display: grid;
   }
-  .h-2 {
-    height: calc(var(--spacing) * 2);
-  }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
@@ -190,44 +187,14 @@
   .h-20 {
     height: calc(var(--spacing) * 20);
   }
-  .h-24 {
-    height: calc(var(--spacing) * 24);
-  }
-  .h-32 {
-    height: calc(var(--spacing) * 32);
-  }
   .h-40 {
     height: calc(var(--spacing) * 40);
-  }
-  .h-64 {
-    height: calc(var(--spacing) * 64);
-  }
-  .h-80 {
-    height: calc(var(--spacing) * 80);
   }
   .h-96 {
     height: calc(var(--spacing) * 96);
   }
-  .h-104 {
-    height: calc(var(--spacing) * 104);
-  }
-  .h-120 {
-    height: calc(var(--spacing) * 120);
-  }
-  .w-2 {
-    width: calc(var(--spacing) * 2);
-  }
-  .w-24 {
-    width: calc(var(--spacing) * 24);
-  }
-  .w-32 {
-    width: calc(var(--spacing) * 32);
-  }
   .w-40 {
     width: calc(var(--spacing) * 40);
-  }
-  .w-48 {
-    width: calc(var(--spacing) * 48);
   }
   .w-64 {
     width: calc(var(--spacing) * 64);
@@ -276,9 +243,6 @@
   }
   .border-\[\#EC9192\] {
     border-color: #EC9192;
-  }
-  .bg-\[\#46494C\] {
-    background-color: #46494C;
   }
   .bg-\[\#B0D0D3\] {
     background-color: #B0D0D3;
