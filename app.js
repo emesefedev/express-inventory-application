@@ -30,7 +30,14 @@ app.get("/", (req, res) => {
 
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(err.statusCode || 500).send(err.message);
+
+  const errorStatusCode = err.statusCode || 500
+  res.status(errorStatusCode)
+  res.render("error", { 
+    title: `Error ${errorStatusCode}`, 
+    message: err.message, 
+    capitalize, 
+    links })
 })
 
 const PORT = process.env.PORT || 3000;

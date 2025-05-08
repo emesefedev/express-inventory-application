@@ -19,7 +19,17 @@ function formatDateToDDMM(date) {
   return `${day}/${month}`
 }
 
+function isValidMonth(month) {
+  return month >= 1 && month <= 12
+}
+
+function isValidDayOfMonth(day, month) {
+  return day >= 1 && day <= months[month - 1].totalDays
+}
+
 module.exports = {
   months,
-  formatDateToDDMM
+  formatDateToDDMM,
+  isValidMonth,
+  isValidDayOfMonth
 }

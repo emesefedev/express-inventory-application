@@ -1,0 +1,12 @@
+<html>
+  <%- include("head", {title}) %>
+
+  <body class="bg-[#B0D0D3]">
+    <%- include("navbar", {links}) %>
+    <main class="p-4">
+      <%- include("title", {title, capitalize}) %>
+      
+      <p class="mt-2"><%= message %></p>
+    </main>
+  </body>
+</html>

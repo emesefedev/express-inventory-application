@@ -74,18 +74,11 @@ async function getPersonalities() {
 
 async function getFirstLetters() {
   const { rows } = await pool.query("SELECT DISTINCT LEFT(name, 1) AS firstLetter FROM villagers ORDER BY firstLetter")
-  console.log(rows)
   return rows
 }
 
 async function getBirthdays() {
   const { rows } = await pool.query("SELECT DISTINCT birthday FROM villagers ORDER BY birthday")
-  return rows
-}
-
-async function getVillagersNamesWithBirthdaysInMonth(month) {
-  const { rows } = await pool.query("SELECT name FROM villagers WHERE EXTRACT(MONTH FROM birthday) = ($1) ORDER BY name",
-    [month])
   return rows
 }
 
@@ -111,6 +104,5 @@ module.exports = {
   getVillagersNamesOfPersonalityThatStartWith,
   getPersonalities,
   getFirstLetters,
-  getVillagersNamesWithBirthdaysInMonth,
   getVillagersNamesWithBirthdaysInDate
 }

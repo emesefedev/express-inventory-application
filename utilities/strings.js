@@ -5,6 +5,12 @@ function capitalize(str) {
     .join(" ")
 }
 
+function isSingleLetter(str) {
+  lowerStr = str.toLowerCase()
+  return /^[a-z]$/.test(lowerStr)
+}
+
 module.exports = {
-  capitalize
+  capitalize,
+  isSingleLetter
 }
