@@ -6,11 +6,13 @@ require('dotenv').config()
 const SQL = `
 CREATE TABLE IF NOT EXISTS villagers (
    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-   name VARCHAR ( 50 ), 
-   species VARCHAR ( 20 ), 
-   gender VARCHAR ( 20 ), 
-   personality VARCHAR ( 20 ), 
-   birthday DATE
+   name VARCHAR ( 64 ), 
+   species VARCHAR ( 28 ), 
+   gender VARCHAR ( 28 ), 
+   personality VARCHAR ( 28 ), 
+   birthday DATE,
+
+   CONSTRAINT unique_name UNIQUE (name)
 );
 
 INSERT INTO villagers (name, species, gender, personality, birthday) 
@@ -432,13 +434,14 @@ VALUES
 async function main() {
   console.log("seeding...")
   
-  const client = new Client({
-    host: process.env.HOST,
-    user: process.env.ROLE_NAME,
-    database: process.env.DATABASE,
+  const config = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_ROLE_NAME,
+    database: process.env.DB_DATABASE,
     password: process.env.DB_PSW,
     port: 5432
-  })
+  }
+  const client = new Client(config)
 
   await client.connect()
   await client.query(SQL)
@@ -447,3 +450,5 @@ async function main() {
 }
 
 main()
+  .then(() => console.log('✅'))
+  .catch((e) => console.error('☠ Algo no ha salido bien', e))

@@ -1,14 +1,11 @@
 const db = require("../db/queries")
 const CustomNotFoundError = require("../errors/CustomNotFoundError")
-const CustomNotValidError = require("../errors/CustomNotValidError")
 const asyncHandler = require("express-async-handler")
-const { capitalize, isSingleLetter } = require("../utilities/strings")
-const { allSpecies, allGenders, allPersonalities } = require("../utilities/villagersConstants")
-const { months, isValidMonth, isValidDayOfMonth } = require("../utilities/dates")
+const { capitalize } = require("../utilities/strings")
+const { months, checkIsValidMonth, checkIsValidDayOfMonth } = require("../utilities/dates")
 
 async function getVillagersNames() {
   const villagersNames = await db.getAllVillagersNames()
-
   if (villagersNames.length === 0) {
     throw new CustomNotFoundError("No villagers found")
   }
@@ -26,20 +23,17 @@ const getVillagerByName = asyncHandler (async (name) =>  {
   return villager[0]
 })
 
-const getVillagersNamesThatStartWith = asyncHandler (async (letter) =>  {
-  const villagersNames = await db.getVillagersNamesThatStartWith(letter)
+const getVillagersNamesThatStartWith = asyncHandler (async (str) =>  {
+  const villagersNames = await db.getVillagersNamesThatStartWith(str)
 
   if (villagersNames.length === 0) {
-    throw new CustomNotFoundError(`No villager found whose name begins with ${capitalize(letter)}`)
+    throw new CustomNotFoundError(`No villager found whose name begins with ${capitalize(str)}`)
   }
 
   return villagersNames
 })
 
 const getVillagersNamesOfSpecies = asyncHandler (async (species) =>  {
-
-  checkSpeciesExist(species)
-
   const villagersNames = await db.getVillagersNamesOfSpecies(species)
 
   if (villagersNames.length === 0) {
@@ -50,12 +44,7 @@ const getVillagersNamesOfSpecies = asyncHandler (async (species) =>  {
 })
 
 const getVillagersNamesOfSpeciesThatStartWith = asyncHandler (async (species, letter) =>  {
-  
-  checkSpeciesExist(species)
-
-  const validLetter = checkIsValidLetter(letter)
-
-  const villagersNames = await db.getVillagersNamesOfSpeciesThatStartWith(species, validLetter)
+  const villagersNames = await db.getVillagersNamesOfSpeciesThatStartWith(species, letter)
 
   if (villagersNames.length === 0) {
     throw new CustomNotFoundError(
@@ -76,8 +65,6 @@ async function getSpecies() {
 }
 
 const getVillagersNamesOfGender = asyncHandler (async (gender) =>  {
-  
-  checkGenderExist(gender)
 
   const villagersNames = await db.getVillagersNamesOfGender(gender)
 
@@ -90,11 +77,7 @@ const getVillagersNamesOfGender = asyncHandler (async (gender) =>  {
 
 const getVillagersNamesOfGenderThatStartWith = asyncHandler (async (gender, letter) =>  {
 
-  checkGenderExist(gender)
-
-  const validLetter = checkIsValidLetter(letter)
-
-  const villagersNames = await db.getVillagersNamesOfGenderThatStartWith(gender, validLetter)
+  const villagersNames = await db.getVillagersNamesOfGenderThatStartWith(gender, letter)
 
   if (villagersNames.length === 0) {
     throw new CustomNotFoundError(
@@ -116,8 +99,6 @@ async function getGenders() {
 
 const getVillagersNamesOfPersonality = asyncHandler (async (personality) =>  {
 
-  checkPersonalityExist(personality)
-
   const villagersNames = await db.getVillagersNamesOfPersonality(personality)
 
   if (villagersNames.length === 0) {
@@ -129,11 +110,7 @@ const getVillagersNamesOfPersonality = asyncHandler (async (personality) =>  {
 
 const getVillagersNamesOfPersonalityThatStartWith = asyncHandler (async (personality, letter) =>  {
 
-  checkPersonalityExist(personality)
-
-  const validLetter = checkIsValidLetter(letter)
-
-  const villagersNames = await db.getVillagersNamesOfPersonalityThatStartWith(personality, validLetter)
+  const villagersNames = await db.getVillagersNamesOfPersonalityThatStartWith(personality, letter)
 
   if (villagersNames.length === 0) {
     throw new CustomNotFoundError(
@@ -163,10 +140,9 @@ async function getFirstLetters() {
   return firstLetters
 }
 
-const getVillagersNamesWithBirthdaysInMonthPerDay = asyncHandler (async (monthName) =>  {
+const getVillagersNamesWithBirthdaysInMonthPerDay = asyncHandler (async (monthIndex) =>  {
 
-  const monthIdx = checkIsValidMonthName(monthName)
-  const month = months[monthIdx]
+  const month = months[monthIndex]
 
   const villagersBirthdays = {}
   for (let day = 1; day <= month.totalDays; day++) {
@@ -200,56 +176,6 @@ module.exports = {
   getVillagersNamesOfPersonalityThatStartWith,
   getPersonalities,
   getFirstLetters,
-  getVillagersNamesWithBirthdaysInMonthPerDay,
-  getVillagersNamesWithBirthdaysInDate
+  getVillagersNamesWithBirthdaysInMonthPerDay
 }
 
-function checkSpeciesExist(species) {
-  if (!allSpecies.includes(species)) {
-    throw new CustomNotFoundError(`There is no ${capitalize(species)} species`)
-  }
-}
-
-function checkGenderExist(gender) {
-  if (!allGenders.includes(gender)) {
-    throw new CustomNotFoundError(`There is no ${capitalize(gender)} gender`)
-  }
-}
-
-function checkPersonalityExist(personality) {
-  if (!allPersonalities.includes(personality)) {
-    throw new CustomNotFoundError(`There is no ${capitalize(personality)} personality`)
-  }
-}
-
-function checkIsValidLetter(letter) {
-  const lowerLetter = letter.toLowerCase()
-  
-  if (!isSingleLetter(lowerLetter)) {
-    throw new CustomNotValidError(`${letter} is not a valid letter`)
-  }
-
-  return lowerLetter
-}
-
-function checkIsValidMonthName(monthName) {
-  const monthIdx = months.findIndex(m => m.monthName === monthName)
-
-  if (monthIdx === -1) {
-    throw new CustomNotValidError(`Invalid month`)
-  }
-
-  return monthIdx
-}
-
-function checkIsValidMonth(month) {
-  if (!isValidMonth(month)) {
-    throw new CustomNotValidError(`Invalid month`)
-  }
-}
-
-function checkIsValidDayOfMonth(day, month) {
-  if (!isValidDayOfMonth(day, month)) {
-    throw new CustomNotValidError(`Invalid date: ${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}`)
-  }
-}

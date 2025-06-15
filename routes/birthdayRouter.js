@@ -1,8 +1,9 @@
 const { Router } = require("express")
-const { capitalize } = require('../utilities/strings')
-const { linksVillagers } = require('../utilities/links')
-const { months } = require('../utilities/dates')
-const { getVillagersNamesWithBirthdaysInMonthPerDay } = require('../controllers/villagerController')
+const { capitalize } = require("../utilities/strings")
+const { checkIsValidMonthName } = require("../utilities/dates")
+const { linksVillagers } = require("../utilities/links")
+const { months } = require("../utilities/dates")
+const { getVillagersNamesWithBirthdaysInMonthPerDay } = require("../controllers/villagerController")
 
 const birthdayRouter = Router()
 
@@ -18,7 +19,9 @@ birthdayRouter.get("/", async (req, res) => {
 birthdayRouter.get("/:monthName", async (req, res) => {
   const { monthName } = req.params
 
-  const { villagersBirthdays, month } = await getVillagersNamesWithBirthdaysInMonthPerDay(monthName)
+  const monthIndex = checkIsValidMonthName(monthName)
+
+  const { villagersBirthdays, month } = await getVillagersNamesWithBirthdaysInMonthPerDay(monthIndex)
   
   res.render("villagersBirthdays", { 
     title: `Birthdays in ${monthName}`, 

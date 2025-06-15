@@ -9,12 +9,12 @@ const { capitalize } = require('../utilities/strings')
 const { formatDateToDDMM } = require('../utilities/dates')
 const { linksVillagers } = require('../utilities/links')
 
-const villagerRouter = Router()
-
 const speciesRouter = require("./speciesRouter")
 const genderRouter = require("./genderRouter")
 const personalityRouter = require("./personalityRouter")
 const birthdayRouter = require("./birthdayRouter")
+
+const villagerRouter = Router()
 
 villagerRouter.use("/species", speciesRouter)
 villagerRouter.use("/genders", genderRouter)
@@ -22,8 +22,10 @@ villagerRouter.use("/personalities", personalityRouter)
 villagerRouter.use("/birthdays", birthdayRouter)
 
 villagerRouter.get("/", async (req, res) => {
-  const villagersNames = await getVillagersNames()
-  const firstLetters = await getFirstLetters()
+  const [villagersNames, firstLetters] = await Promise.all([
+    getVillagersNames(),
+    getFirstLetters()
+  ])
   res.render("villagers", { 
     title: "Villagers", 
     villagersNames, 

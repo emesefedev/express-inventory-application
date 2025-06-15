@@ -3,10 +3,11 @@ const {
   getVillagersNamesOfGender, 
   getVillagersNamesOfGenderThatStartWith,
   getGenders
-} = require('../controllers/villagerController')
-const { capitalize } = require('../utilities/strings')
-const { getFirstLettersGivenNames } = require('../utilities/names')
-const { linksVillagers } = require('../utilities/links')
+} = require("../controllers/villagerController")
+const { capitalize, isValidLetter } = require("../utilities/strings")
+const { getFirstLettersGivenNames } = require("../utilities/names")
+const { linksVillagers } = require("../utilities/links")
+const { checkGenderExist } = require("../utilities/villagers")
 
 const genderRouter = Router()
 
@@ -22,7 +23,9 @@ genderRouter.get("/", async (req, res) => {
 })
 
 genderRouter.get("/:gender", async (req, res) => {
-  const { gender } = req.params;
+  const { gender } = req.params
+  checkGenderExist(gender)
+
   const villagersNames = await getVillagersNamesOfGender(gender)
   const firstLetters = getFirstLettersGivenNames(villagersNames)
   
@@ -37,8 +40,11 @@ genderRouter.get("/:gender", async (req, res) => {
 })
 
 genderRouter.get("/:gender/:letter", async (req, res) => {
-  const { gender, letter } = req.params;
-  const villagersNames = await getVillagersNamesOfGenderThatStartWith(gender, letter)
+  const { gender, letter } = req.params
+  checkGenderExist(gender)
+  const validLetter = isValidLetter(letter)
+
+  const villagersNames = await getVillagersNamesOfGenderThatStartWith(gender, validLetter)
   
   res.render("villagers", { 
     title: `Gender: ${gender} & Letter: ${letter}`, 

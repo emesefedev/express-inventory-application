@@ -6,7 +6,7 @@ async function getAllVillagers() {
 }
 
 async function getAllVillagersNames() {
-  const { rows } = await pool.query("SELECT name FROM villagers ORDER BY name")
+  const { rows, rowCount } = await pool.query("SELECT name FROM villagers ORDER BY name")
   return rows
 }
 

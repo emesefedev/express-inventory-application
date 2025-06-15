@@ -3,10 +3,11 @@ const {
   getVillagersNamesOfSpecies,
   getVillagersNamesOfSpeciesThatStartWith, 
   getSpecies
-} = require('../controllers/villagerController')
-const { capitalize } = require('../utilities/strings')
-const { getFirstLettersGivenNames } = require('../utilities/names')
-const { linksVillagers } = require('../utilities/links')
+} = require("../controllers/villagerController")
+const { capitalize, isValidLetter } = require("../utilities/strings")
+const { getFirstLettersGivenNames } = require("../utilities/names")
+const { linksVillagers } = require("../utilities/links")
+const { checkSpeciesExist } = require("../utilities/villagers")
 
 const speciesRouter = Router()
 
@@ -23,6 +24,8 @@ speciesRouter.get("/", async (req, res) => {
 
 speciesRouter.get("/:species", async (req, res) => {
   const { species } = req.params;
+  checkSpeciesExist(species)
+
   const villagersNames = await getVillagersNamesOfSpecies(species)
   const firstLetters = getFirstLettersGivenNames(villagersNames)
   
@@ -38,7 +41,10 @@ speciesRouter.get("/:species", async (req, res) => {
 
 speciesRouter.get("/:species/:letter", async (req, res) => {
   const { species, letter } = req.params;
-  const villagersNames = await getVillagersNamesOfSpeciesThatStartWith(species, letter)
+  checkSpeciesExist(species)
+  const validLetter = isValidLetter(letter)
+
+  const villagersNames = await getVillagersNamesOfSpeciesThatStartWith(species, validLetter)
   
   res.render("villagers", { 
     title: `Species: ${species} & Letter: ${letter}`, 

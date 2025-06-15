@@ -3,10 +3,11 @@ const {
   getVillagersNamesOfPersonality,
   getVillagersNamesOfPersonalityThatStartWith,
   getPersonalities
-} = require('../controllers/villagerController')
-const { capitalize } = require('../utilities/strings')
-const { getFirstLettersGivenNames } = require('../utilities/names')
-const { linksVillagers } = require('../utilities/links')
+} = require("../controllers/villagerController")
+const { capitalize, isValidLetter } = require("../utilities/strings")
+const { getFirstLettersGivenNames } = require("../utilities/names")
+const { linksVillagers } = require("../utilities/links")
+const { checkPersonalityExist } = require("../utilities/villagers")
 
 const personalityRouter = Router()
 
@@ -23,6 +24,8 @@ personalityRouter.get("/", async (req, res) => {
 
 personalityRouter.get("/:personality", async (req, res) => {
   const { personality } = req.params;
+  checkPersonalityExist(personality)
+
   const villagersNames = await getVillagersNamesOfPersonality(personality)
   const firstLetters = getFirstLettersGivenNames(villagersNames)
   
@@ -38,7 +41,10 @@ personalityRouter.get("/:personality", async (req, res) => {
 
 personalityRouter.get("/:personality/:letter", async (req, res) => {
   const { personality, letter } = req.params;
-  const villagersNames = await getVillagersNamesOfPersonalityThatStartWith(personality, letter)
+  checkPersonalityExist(personality)
+  const validLetter = isValidLetter(letter)
+
+  const villagersNames = await getVillagersNamesOfPersonalityThatStartWith(personality, validLetter)
   
   res.render("villagers", { 
     title: `Personality: ${personality} & Letter: ${letter}`, 

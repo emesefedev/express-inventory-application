@@ -1,3 +1,5 @@
+const CustomNotValidError = require("../errors/CustomNotValidError")
+
 const months = [
   { monthName: 'january', monthNumber: 1, totalDays: 31 },
   { monthName: 'february', monthNumber: 2, totalDays: 28 },
@@ -27,9 +29,32 @@ function isValidDayOfMonth(day, month) {
   return day >= 1 && day <= months[month - 1].totalDays
 }
 
+function checkIsValidMonthName(monthName) {
+  const monthIdx = months.findIndex(m => m.monthName === monthName)
+
+  if (monthIdx === -1) {
+    throw new CustomNotValidError(`Invalid month`)
+  }
+
+  return monthIdx
+}
+
+function checkIsValidMonth(month) {
+  if (!isValidMonth(month)) {
+    throw new CustomNotValidError(`Invalid month`)
+  }
+}
+
+function checkIsValidDayOfMonth(day, month) {
+  if (!isValidDayOfMonth(day, month)) {
+    throw new CustomNotValidError(`Invalid date: ${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}`)
+  }
+}
+
 module.exports = {
   months,
   formatDateToDDMM,
-  isValidMonth,
-  isValidDayOfMonth
+  checkIsValidMonthName,
+  checkIsValidMonth,
+  checkIsValidDayOfMonth
 }

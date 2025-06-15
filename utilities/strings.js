@@ -1,3 +1,5 @@
+const CustomNotValidError = require("../errors/CustomNotValidError")
+
 function capitalize(str) {
   return str
     .split(" ")
@@ -6,11 +8,22 @@ function capitalize(str) {
 }
 
 function isSingleLetter(str) {
-  lowerStr = str.toLowerCase()
-  return /^[a-z]$/.test(lowerStr)
+  const lowerStr = str.toLowerCase()
+  return /^[a-z]$/.test(lowerStr) // prefer faster checking method. regex allocates an object into memory
+}
+
+function isValidLetter(letter) {
+  const lowerLetter = letter.toLowerCase()
+  
+  if (!isSingleLetter(lowerLetter)) {
+    throw new CustomNotValidError(`${letter} is not a valid letter`)
+  }
+
+  return lowerLetter
 }
 
 module.exports = {
   capitalize,
-  isSingleLetter
+  isSingleLetter,
+  isValidLetter
 }
