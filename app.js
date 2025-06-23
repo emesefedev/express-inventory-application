@@ -1,4 +1,6 @@
 require('dotenv').config()
+// Important
+const ejs = require('ejs')
 const { capitalize } = require('./utilities/strings')
 
 const express = require("express")
@@ -10,15 +12,22 @@ const links = [
   { href: "/villagers", text: "Villagers" },
 ]
 
-const app = express()
+const assetsPath = process.env.APP_PUBLIC_DIR
+const viewsPath = path.join(process.cwd(), "views")
+console.log('Using', {
+  assetsPath,
+  viewsPath
+})
 
-const publicDir = process.env.PUBLIC_DIR ?? __dirname
-const assetsPath = path.join(publicDir, "public")
+const app = express()
 app.use(express.static(assetsPath))
 
-app.set("views", path.join(publicDir, "views"))
+app.set("views", viewsPath)
 app.set("view engine", "ejs")
-
+app.engine('ejs', (path, data, cb) => {
+  // Reference EJS otherwise it gets tree-shaken out of the bundle
+  ejs.renderFile(path, data, {}, cb)
+})
 
 app.use("/villagers", villagerRouter)
 
