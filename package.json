@@ -6,7 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch app.js",
-    "devcss": "npx @tailwindcss/cli -i ./src/style.css -o ./public/style.css --watch"
+    "devcss": "npx @tailwindcss/cli -i ./src/style.css -o ./public/style.css --watch",
+    "gen:tailwind:prod": "npx @tailwindcss/cli -i ./src/style.css -o ./public/style.css",
+    "bundle_assets:prod": "cp -r public/* ./dist/public/ && cp -r views dist/views && cp db/init.sql ./dist",
+    "prebuild": "rm -rf ./dist/ && mkdir -p dist/public/ && npm run gen:tailwind:prod && npm run bundle_assets:prod",
+    "build": "bun build app.js --outfile dist/app.cjs --format cjs --target node",
+    "deploy": "scp -r dist/* emesefe:/home/emesefe/express-inventory-application/ && ssh emesefe 'pm2 restart express-inventory-application --update-env'"
   },
   "keywords": [],
   "author": "",
