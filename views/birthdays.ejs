@@ -1,0 +1,19 @@
+<html>
+  <%- include("head", {title}) %>
+
+  <body class="bg-[#B0D0D3]">
+    <%- include("navbar", {links}) %>
+    <main class="p-4">
+      <%- include("title", {title, capitalize}) %>
+      <div class="grid grid-cols-4 gap-4 mt-4">
+        <% months.map(month => { %>
+          <a 
+            href=<%= `/villagers/birthdays/${month.monthName}`%> 
+            class="flex justify-center items-center bg-[#EC9192] border border-[#EC9192] border-2 rounded-lg h-16 text-white"> 
+              <p> <%= capitalize(month.monthName) %>  </p> 
+          </a>
+        <% }) %>
+      </div>
+    </main>
+  </body>
+</html>

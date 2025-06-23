@@ -1,0 +1,18 @@
+<html>
+  <%- include("head", {title}) %>
+
+  <body class="bg-[#B0D0D3]">
+    <%- include("navbar", {links}) %>
+    <% if (firstLetters.length > 0) { %>
+      <%- include("navbarLetters", {firstLetters, capitalize}) %>
+    <% } %>
+    <main class="p-4">
+      <%- include("title", {title, capitalize}) %>
+      <ul class="mt-2">
+        <% villagersNames.map(villager => { %>
+          <li> <a href=<%= `/villagers/${villager.name.replace(" ", "%20")}`%> >  <%= capitalize(villager.name) %>  </a> </li>
+        <% }) %>
+      </ul>
+    </main>
+  </body>
+</html>

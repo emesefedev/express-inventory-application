@@ -1,0 +1,15 @@
+<html>
+  <%- include("head", {title}) %>
+
+  <body class="bg-[#B0D0D3]">
+    <%- include("navbar", {links}) %>
+    <main class="p-4">
+      <%- include("title", {title, capitalize}) %>
+      <ul class="mt-2">
+        <% personalities.map(villager => { %>
+          <li> <a href=<%= `/villagers/personalities/${villager.personality}`%> >  <%= capitalize(villager.personality) %>  </a> </li>
+        <% }) %>
+      </ul>
+    </main>
+  </body>
+</html>
