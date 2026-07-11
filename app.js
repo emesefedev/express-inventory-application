@@ -6,6 +6,8 @@ const express = require("express")
 const path = require("node:path")
 const villagerRouter = require("./routes/villagerRouter")
 
+const initializeDatabase = require("./db/initializeDatabase")
+
 const links = [
   { href: "/", text: "Home" },
   { href: "/villagers", text: "Villagers" },
@@ -52,8 +54,19 @@ app.use((err, req, res, next) => {
   })
 })
 
-const PORT = process.env.APP_PORT || 3000;
+const PORT = process.env.APP_PORT || 3000
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}!`)
-})
+async function start() {
+  try {
+    await initializeDatabase()
+
+    app.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}!`)
+    })
+  } catch (err) {
+    console.error(err)
+    process.exit(1)
+  }
+}
+
+start()

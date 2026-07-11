@@ -422,4 +422,5 @@ VALUES
   ('yuka', 'koala', 'female', 'snooty', '1998-07-20'),
   ('zell', 'deer', 'male', 'smug', '1998-06-07'),
   ('zoe', 'anteater', 'female', 'normal', '1998-02-10'),
-  ('zucker', 'octopus', 'male', 'lazy', '1998-03-08');
+  ('zucker', 'octopus', 'male', 'lazy', '1998-03-08')
+ON CONFLICT (name) DO NOTHING;
