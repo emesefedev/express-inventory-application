@@ -1,4 +1,3 @@
-require('dotenv').config()
 // Important
 const ejs = require('ejs')
 const { capitalize } = require('./utilities/strings')
@@ -12,7 +11,7 @@ const links = [
   { href: "/villagers", text: "Villagers" },
 ]
 
-const assetsPath = process.env.APP_PUBLIC_DIR
+const assetsPath = path.join(process.cwd(), "public")
 const viewsPath = path.join(process.cwd(), "views")
 console.log('Using', {
   assetsPath,

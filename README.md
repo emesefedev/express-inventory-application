@@ -11,3 +11,9 @@
 🎯[Assignment](https://www.theodinproject.com/lessons/node-path-nodejs-inventory-application)
 
 📦[Solution]() In progress...
+
+---
+
+Remember to use .env.docker file :
+
+`docker compose --env-file .env.docker up --build`
